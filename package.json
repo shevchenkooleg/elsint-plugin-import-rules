@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-path-import-validation-plugin",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "plugin is designed to detect illegal import of a components, according to the FSD methodology",
   "keywords": [
     "eslint",
