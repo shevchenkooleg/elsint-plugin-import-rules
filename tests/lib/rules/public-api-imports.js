@@ -71,11 +71,13 @@ ruleTester.run("public-api-imports", rule, {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/ui/ProfilePage.tsx',
       code: "import { classNames } from 'pages/ProfilePage/ui/ProfilePage'",
       errors: [{ message: "Absolute imports are only allowed from Public API (index.ts/testing.ts)"}],
+      output: "import { classNames } from 'pages/ProfilePage'"
     },
     {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/ui/ProfilePage.tsx',
       code: "import { classNames } from '@/pages/ProfilePage/ui/ProfilePage'",
       errors: [{ message: "Absolute imports are only allowed from Public API (index.ts/testing.ts)"}],
+      output: "import { classNames } from '@/pages/ProfilePage'",
       options: [{
         alias: '@'
       }]
@@ -84,14 +86,17 @@ ruleTester.run("public-api-imports", rule, {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/entities/StoreDecorator.tsx',
       code: "import { blaReducer } from 'entities/Article/testing/test.ts'",
       errors: [{message: "Absolute imports are only allowed from Public API (index.ts/testing.ts)"}],
+      output: "import { blaReducer } from 'entities/Article'",
       options: [{
         testFilesPatterns: ['**/*.test.*', '**/*.stories.ts', '**/StoreDecorator.tsx']
       }]
+
     },
     {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/model/ProfilePage.test.ts',
       code: "import { blaReducer } from '@/entities/blaEntity/model/blaSlice.ts'",
       errors: [{message: "Absolute imports are only allowed from Public API (index.ts/testing.ts)"}],
+      output: "import { blaReducer } from '@/entities/blaEntity'",
       options: [{
         alias: '@',
         testFilesPatterns: ['**/*.test.*', '**/*.stories.ts', '**/StoreDecorator.tsx']
@@ -101,6 +106,7 @@ ruleTester.run("public-api-imports", rule, {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/model/ProfilePage.stories.tsx',
       code: "import { blaReducer } from '@/entities/blaEntity/model/blaSlice.ts'",
       errors: [{message: "Absolute imports are only allowed from Public API (index.ts/testing.ts)"}],
+      output: "import { blaReducer } from '@/entities/blaEntity'",
       options: [{
         alias: '@',
         testFilesPatterns: ['**/*.test.*', '**/*.stories.tsx', '**/StoreDecorator.tsx']
@@ -110,6 +116,7 @@ ruleTester.run("public-api-imports", rule, {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/model/forbidden.ts',
       code: "import { blaReducer } from '@/entities/blaEntity/testing'",
       errors: [{message: "It is forbidden to import data not in test files from publicApi/testing"}],
+      output: "import { blaReducer } from '@/entities/blaEntity/testing'",
       options: [{
         alias: '@',
         testFilesPatterns: ['**/*.test.*', '**/*.stories.tsx', '**/StoreDecorator.tsx']
