@@ -28,6 +28,13 @@ ruleTester.run("relative-path-import-checker", rule, {
       code: "import { classNames } from 'shared/lib/classNames/classNames'",
       errors: [{message: "Component imports within the same module should be relative"}]
     },
+    {
+      filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/cypress/support/commands.ts',
+      code: "import {USER_LOCALSTORAGE_KEY} from '@/shared/const/localstorage';",
+      options: [{
+        alias: '@'
+      }]
+    },
   ],
 
   invalid: [
@@ -35,13 +42,13 @@ ruleTester.run("relative-path-import-checker", rule, {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/ui/ProfilePage.tsx',
       code: "import { classNames } from 'pages/ProfilePage/ui/lib'",
       errors: [{ message: "Component imports within the same module should be relative"}],
-      output: "import { classNames } from './lib'",
+      output: 'import { classNames } from "./lib"',
     },
     {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/model/Slice.ts',
       code: "import { classNames } from '@/pages/ProfilePage'",
       errors: [{ message: "Component imports within the same module should be relative"}],
-      output: "import { classNames } from '..'",
+      output: 'import { classNames } from ".."',
       options: [{
         alias: '@'
       }]

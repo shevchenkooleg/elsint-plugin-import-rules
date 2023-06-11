@@ -64,6 +64,13 @@ ruleTester.run("public-api-imports", rule, {
         testFilesPatterns: ['**/*.test.*', '**/*.stories.tsx', '**/StoreDecorator.tsx']
       }]
     },
+    {
+      filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/cypress/support/commands.ts',
+      code: "import {USER_LOCALSTORAGE_KEY} from '@/shared/const/localstorage';",
+      options: [{
+        alias: '@',
+      }]
+    },
   ],
 
   invalid: [

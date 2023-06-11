@@ -36,6 +36,11 @@ ruleTester.run("layer-imports", rule, {
     //   options: aliasOptions,
     // },
     {
+      filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/cypress/support/commands.ts',
+      code: "import {USER_LOCALSTORAGE_KEY} from '@/shared/const/localstorage';",
+      options: aliasOptions,
+    },
+    {
       filename: '/Users/oleg/programming_training/UlbiTV/my-blog-project/src/pages/ProfilePage/ui/ProfilePage.tsx',
       code: "import { classNames } from '@/shared/lib/classNames'",
       errors: [],
